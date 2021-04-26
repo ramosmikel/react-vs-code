@@ -1,9 +1,12 @@
 import React, { useRef } from 'react';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { connect, ConnectedProps } from 'react-redux';
 import Editor, { Monaco } from '@monaco-editor/react';
 import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
+import { MdxRemote } from 'next-mdx-remote/types';
 import { useUiState, useEditorFiles, useTabs } from '@/lib/hooks';
 import {
+  MarkdownRenderer,
   CreateFileInput,
   RenameFileInput,
   Sidebar,
@@ -14,11 +17,12 @@ import {
 import { getEditorFile, getEditorFiles, getUiState, getOpenTabs } from '@/lib/modules';
 import { RootState } from '@/lib/types';
 import { validateFileName, theme, submitFiles } from '@/lib/utils';
+import { getReadme } from '@/lib/utils/api';
 import s from '@/styles/Home.module.css';
 
-type Props = ConnectedProps<typeof connector>;
+type Props = ConnectedProps<typeof connector> & InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home = ({ currentFile, files, openTabs, uiState }: Props) => {
+const Home = ({ currentFile, files, openTabs, uiState, mdxContent }: Props) => {
   const editorFilesHook = useEditorFiles();
   const tabsHook = useTabs();
   const uiStateHook = useUiState();
@@ -212,7 +216,11 @@ const Home = ({ currentFile, files, openTabs, uiState }: Props) => {
             />
           </div>
         ) : (
-          <div className={s.DefaultScreen} />
+          <div className={s.MarkdownRootContainer}>
+            <div className={s.MarkdownContainer}>
+              <MarkdownRenderer mdx={mdxContent} />
+            </div>
+          </div>
         )}
         <div className={s.UtilityButtonsContainer}>
           {isTabAvailable && openTabs.tabs[openTabs.activeTab.index]?.isUnsaved && (
@@ -243,3 +251,12 @@ const mapStateToProps = (state: RootState) => ({
 const connector = connect(mapStateToProps);
 
 export default connector(Home);
+
+interface StaticProps {
+  mdxContent: MdxRemote.Source;
+}
+
+export const getStaticProps: GetStaticProps<StaticProps> = async () => {
+  const mdxContent = await getReadme();
+  return { props: { mdxContent } };
+};

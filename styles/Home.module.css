@@ -14,8 +14,12 @@
   @apply flex-grow h-screen overflow-y-hidden bg-gray-main;
 }
 
-.DefaultScreen {
+.MarkdownRootContainer {
   @apply flex-grow h-screen p-4 overflow-y-scroll text-white bg-gray-main;
+}
+
+.MarkdownContainer {
+  @apply max-w-4xl mx-auto text-center;
 }
 
 .UtilityButtonsContainer {

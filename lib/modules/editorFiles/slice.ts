@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CreateFileArgs, SaveFileArgs, RenameFileArgs, DeleteFileArgs } from './types';
+import { createSlice } from '@reduxjs/toolkit';
+import { createFile, deleteFile, renameFile, saveFile } from '../sharedActions';
 import { RootState } from '@/lib/types';
 
 const initialState: RootState['editorFiles'] = [
@@ -12,8 +12,9 @@ const initialState: RootState['editorFiles'] = [
 export const slice = createSlice({
   name: 'editorFiles',
   initialState,
-  reducers: {
-    createFile: (state, action: PayloadAction<CreateFileArgs>) => {
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(createFile, (state, action) => {
       const { fileName, value } = action.payload;
       state.push({
         fileName,
@@ -21,23 +22,24 @@ export const slice = createSlice({
       });
 
       return state;
-    },
-    saveFile: (state, action: PayloadAction<SaveFileArgs>) => {
+    });
+    builder.addCase(saveFile, (state, action) => {
       const fileIndex = state.findIndex(file => file.fileName === action.payload.fileName);
       state[fileIndex].value = action.payload.value;
       return state;
-    },
-    renameFile: (state, action: PayloadAction<RenameFileArgs>) => {
+    });
+    builder.addCase(renameFile, (state, action) => {
       const fileIndex = state.findIndex(file => file.fileName === action.payload.fileName);
+
       state[fileIndex].fileName = action.payload.edits.fileName;
+
       return state;
-    },
-    deleteFile: (state, action: PayloadAction<DeleteFileArgs>) => {
+    });
+    builder.addCase(deleteFile, (state, action) => {
       state = state.filter(file => file.fileName !== action.payload.fileName);
       return state;
-    },
+    });
   },
 });
 
 export default slice.reducer;
-export const { createFile, saveFile, renameFile, deleteFile } = slice.actions;

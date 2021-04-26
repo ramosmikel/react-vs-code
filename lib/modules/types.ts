@@ -1,8 +1,12 @@
-import { EditorFile } from '../../types';
+import { EditorFile } from "../types";
 
 export interface CreateFileArgs {
   fileName: string;
   value?: string;
+}
+
+export interface SwitchTabArgs {
+  fileName: string;
 }
 
 export interface SaveFileArgs {

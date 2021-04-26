@@ -1,17 +1,41 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SwitchTabArgs, CloseTabArgs, EditTabArgs } from './types';
+import { createFile, deleteFile, renameFile, saveFile, switchTab } from '../sharedActions';
+import { CloseTabArgs, EditTabArgs } from './types';
 import { Tabs } from '@/lib/types';
 
 const initialState: Tabs = {
   activeTab: { index: -1 },
-  tabs: [],
+  tabs: [], 
 };
 
 export const slice = createSlice({
-  name: 'tabs',
+  name: 'openTabs',
   initialState,
   reducers: {
-    switchTab: (state, action: PayloadAction<SwitchTabArgs>) => {
+    closeTab: (state, action: PayloadAction<CloseTabArgs>) => {
+      state.tabs = state.tabs.filter(file => file.fileName !== action.payload.fileName);
+
+      if (!state.tabs?.length) {
+        state.activeTab = { index: -1 };
+        return state;
+      }
+
+      state.activeTab = {
+        fileName: state.tabs[state.tabs.length - 1].fileName,
+        index: state.tabs.length - 1,
+      };
+
+      return state;
+    },
+    editTab: (state, action: PayloadAction<EditTabArgs>) => {
+      const tabIndex = state.activeTab.index;
+      state.tabs[tabIndex].isUnsaved = !!action?.payload?.isUnsaved;
+
+      return state;
+    },
+  },
+  extraReducers: builder => {
+    builder.addCase(switchTab, (state, action) => {
       if (state.activeTab.index === -1) {
         state.tabs.push({ fileName: action.payload.fileName, isUnsaved: false });
         state.activeTab.index = 0;
@@ -34,28 +58,53 @@ export const slice = createSlice({
       state.activeTab.fileName = action.payload.fileName;
 
       return state;
-    },
-    closeTab: (state, action: PayloadAction<CloseTabArgs>) => {
+    });
+    builder.addCase(saveFile, state => {
+      state.tabs[state.activeTab.index].isUnsaved = false;
+      return state;
+    });
+    builder.addCase(renameFile, (state, action) => {
+      const tabIndex = state.tabs.findIndex(tab => tab.fileName === action.payload.fileName);
+
+      if (tabIndex < 0) {
+        return state;
+      }
+
+      state.tabs[tabIndex].fileName = action.payload.edits.fileName;
+
+      if (state.activeTab.fileName === action.payload.fileName) {
+        state.activeTab.fileName = action.payload.edits.fileName;
+      }
+
+      return state;
+    });
+    builder.addCase(createFile, (state, action) => {
+      const { fileName } = action.payload;
+
+      state.tabs.push({ fileName, isUnsaved: false });
+      state.activeTab.fileName = fileName;
+      state.activeTab.index = state.tabs.length - 1;
+
+      return;
+    });
+    builder.addCase(deleteFile, (state, action) => {
       state.tabs = state.tabs.filter(file => file.fileName !== action.payload.fileName);
 
       if (!state.tabs?.length) {
         state.activeTab = { index: -1 };
+
         return state;
       }
 
-      state.activeTab = {
-        fileName: state.tabs[state.tabs.length - 1].fileName,
-        index: state.tabs.length - 1,
-      };
+      if (state.activeTab.fileName === action.payload.fileName) {
+        state.activeTab = {
+          fileName: state.tabs[state.tabs.length - 1].fileName,
+          index: state.tabs.length - 1,
+        };
+      }
 
       return state;
-    },
-    editTab: (state, action: PayloadAction<EditTabArgs>) => {
-      const tabIndex = state.activeTab.index;
-      state.tabs[tabIndex].isUnsaved = !!action?.payload?.isUnsaved;
-
-      return state;
-    },
+    });
   },
 });
 

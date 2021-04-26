@@ -27,6 +27,15 @@ export interface ActiveTab {
 export type UIState = {
   isShown: boolean;
   uiStateName: UIStateNames;
+  extras?: UIStateExtras;
 };
 
-export type UIStateNames = '';
+export type UIStateNames = 'CREATE_FILE_INPUT' | 'RENAME_FILE_INPUT';
+
+export interface UIStateExtras {
+  location?: string;
+  message?: string;
+  warningType?: WarningType;
+}
+
+export type WarningType = 'HIGH' | 'MEDIUM' | 'LOW';

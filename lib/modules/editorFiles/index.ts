@@ -1,2 +1,2 @@
-export { getEditorFiles } from './cachedSelectors';
+export { getEditorFiles, getEditorFile } from './cachedSelectors';
 export { editorFilesSelector } from './selectors';

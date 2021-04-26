@@ -6,7 +6,3 @@ export interface EditTabArgs {
   fileName: string;
   isUnsaved?: boolean;
 }
-
-export interface SwitchTabArgs {
-  fileName: string;
-}

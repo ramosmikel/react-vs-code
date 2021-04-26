@@ -2,7 +2,7 @@
 
 <hr />
 
-<h2>🎉 This project was created with the help of [@monaco-react](https://github.com/suren-atoyan/monaco-react), Nextjs & TailwindCSS 🎉</h2>
+## 🎉 This project was created with the help of [@monaco-react](https://github.com/suren-atoyan/monaco-react), Nextjs & TailwindCSS 🎉
 
 <br/>
 
@@ -61,9 +61,9 @@
 
 <ul>
   <li>
-    
+    <div>
     👉 <u>Redux vs Context</u> 
-    
+    </div>
     
       This project contains complex & high frequency updates on the state, optimizing Context will be significantly more complex than Redux. Context triggers re-renders on every update.
     
@@ -72,9 +72,9 @@
     
   </li>
   <li>
-    
+    <div>
     👉 <u>Project Structure & Logic</u> 
-    
+    </div>
     
       This project contains one page, therefore I decided to try keep all the logic within the index page.
     
@@ -83,9 +83,9 @@
     
   </li>
   <li>
-    
+    <div>
     👉 <u>Todo's</u> 
-    
+    </div>
     
       Purifying and perfomance testing components.
     

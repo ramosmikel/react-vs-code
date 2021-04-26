@@ -1,6 +1,7 @@
 export interface RootState {
   editorFiles: EditorFile[];
   openTabs: Tabs;
+  uiState: UIState;
 }
 
 export interface EditorFile {
@@ -22,3 +23,10 @@ export interface ActiveTab {
   index: number;
   fileName?: string;
 }
+
+export type UIState = {
+  isShown: boolean;
+  uiStateName: UIStateNames;
+};
+
+export type UIStateNames = '';

@@ -1,0 +1,3 @@
+.root {
+  @apply relative flex w-screen h-screen bg-gray-main;
+}

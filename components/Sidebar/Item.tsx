@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import s from './styles/item.module.css';
+import s from './styles/Item.module.css';
 
 interface Props {
   onItemClick: (fileName: string) => void;

@@ -14,10 +14,6 @@
   @apply w-2 h-2 bg-yellow-600 rounded-full;
 }
 
-.CancelIconContainer {
-  @apply w-4 h-4;
-}
-
 .CancelIcon {
   @apply opacity-50;
 }

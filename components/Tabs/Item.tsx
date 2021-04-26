@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import s from './styles/Item.module.css';
 
@@ -10,7 +10,7 @@ interface Props {
   onCloseTab: (fileName: string) => void;
 }
 
-const Tab: FC<Props> = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsaved, ...rest }) => {
+const Tab = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsaved}: Props) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleOnClick = () => onClickTab(fileName);
@@ -20,7 +20,7 @@ const Tab: FC<Props> = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsave
 
   return (
     <div className={cn(s.Root, isSelected ? 'border-yellow-300' : 'border-transparent')}>
-      <button onClick={handleOnClick} {...rest}>
+      <button onClick={handleOnClick}>
         <span>
           {fileName}
         </span>
@@ -32,7 +32,7 @@ const Tab: FC<Props> = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsave
           </div>
         ) : (
           <button onClick={handleOnCloseTab}>
-            <div className={s.CancelIconContainer} >
+            <div>
               <img src="./icons/cancel.svg" height="15" width="15" className={s.CancelIcon} />
             </div>
           </button>

@@ -17,7 +17,7 @@ const Panel = ({ children }: PropsWithChildren<{}>) => {
           className={cn(s.QuickAccessPanel, isPanelOpen ? 'border-white' : 'border-transparent')}
         >
           <button onClick={handlePanelStatus}>
-            <img src="./icons/files.svg" height="25" width="25" className="opacity-50" />
+            <img src="./icons/files.svg" height="25" width="25" className={s.QuickAccessIcon} />
           </button>
         </div>
       </div>

@@ -58,7 +58,7 @@ const CreateFileInput = ({
         onChange={handleOnValueChange}
       />
       {message && (
-        <div className="relative">
+        <div className={s.WarningMessageContainer}>
           <span className={cn(s.WarningMessage, warningColor || 'border-transparent')}>
             {message}
           </span>

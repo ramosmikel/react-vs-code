@@ -10,6 +10,10 @@
   @apply flex justify-center py-2 border-l;
 }
 
+.QuickAccessIcon { 
+  @apply opacity-50;
+}
+
 .PanelContainer {
   @apply flex flex-col w-48 py-2 space-y-2 text-orange-main bg-black-light;
 }

@@ -1,0 +1,23 @@
+.Root {
+  @apply relative flex items-center px-2 pb-0.5 mx-3 my-1 space-x-1 text-sm border-b text-orange-main;
+}
+
+.StatusIconContainer {
+  @apply w-4 h-4;
+}
+
+.UnSavedIconContainer {
+  @apply flex items-center justify-center mt-1;
+}
+
+.UnSavedIcon {
+  @apply w-2 h-2 bg-yellow-600 rounded-full;
+}
+
+.CancelIconContainer {
+  @apply w-4 h-4;
+}
+
+.CancelIcon {
+  @apply opacity-50;
+}

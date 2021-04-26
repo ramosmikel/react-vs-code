@@ -1,0 +1,3 @@
+.List {
+  @apply flex w-full h-8 overflow-x-scroll overflow-y-hidden;
+}

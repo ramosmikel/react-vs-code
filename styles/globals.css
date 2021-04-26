@@ -1,0 +1,64 @@
+h1 {
+  @apply text-4xl text-orange-main;
+}
+
+hr {
+  @apply my-4;
+}
+
+h3 {
+  @apply text-xl font-thin;
+}
+
+a {
+  @apply text-orange-main;
+}
+
+img {
+  @apply rounded-md;
+}
+
+h2 {
+  @apply text-3xl font-thin;
+}
+
+h3 {
+  @apply mt-2 text-2xl;
+}
+
+h4 {
+  @apply mt-4 text-xl font-thin;
+}
+
+ul {
+  @apply p-4 space-y-4 rounded-md bg-black-dark;
+}
+
+button:focus {
+  @apply outline-none;
+}
+
+pre {
+  @apply font-sans text-sm;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(204, 204, 204, 0.33);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(204, 204, 204, 0.33);
+  border-radius: 2.5px;
+  -webkit-border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(204, 204, 204, 0.33);
+}

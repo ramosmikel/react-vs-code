@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from '@/lib/store';
 
 import '@/styles/main.css';
+import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

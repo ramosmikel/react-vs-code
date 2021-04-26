@@ -6,6 +6,7 @@ import { editor } from 'monaco-editor/esm/vs/editor/editor.api';
 import { MdxRemote } from 'next-mdx-remote/types';
 import { useUiState, useEditorFiles, useTabs } from '@/lib/hooks';
 import {
+  SEO,
   MarkdownRenderer,
   CreateFileInput,
   RenameFileInput,
@@ -19,6 +20,7 @@ import { RootState } from '@/lib/types';
 import { validateFileName, theme, submitFiles } from '@/lib/utils';
 import { getReadme } from '@/lib/utils/api';
 import s from '@/styles/Home.module.css';
+
 
 type Props = ConnectedProps<typeof connector> & InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -145,6 +147,7 @@ const Home = ({ currentFile, files, openTabs, uiState, mdxContent }: Props) => {
 
   return (
     <>
+      <SEO title={isTabAvailable && openTabs.activeTab.fileName} />
       <div className={s.Root}>
         <div className={s.SidebarContainer}>
           <Sidebar>

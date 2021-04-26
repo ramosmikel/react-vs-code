@@ -1,0 +1,11 @@
+.Root {
+  @apply flex items-center px-2;
+}
+
+.CancelIconContainer {
+  @apply w-4 h-4 mt-1.5;
+}
+
+.FileNameContainer {
+  @apply w-40 text-left truncate;
+}

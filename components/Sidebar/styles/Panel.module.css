@@ -1,0 +1,27 @@
+.Root {
+  @apply flex h-full;
+}
+
+.QuickAccessPanelContainer {
+  @apply flex-shrink-0 w-10 h-full py-2 bg-black-dark;
+}
+
+.QuickAccessPanel {
+  @apply flex justify-center py-2 border-l;
+}
+
+.PanelContainer {
+  @apply flex flex-col w-48 py-2 space-y-2 text-orange-main bg-black-light;
+}
+
+.ExplorerContainer {
+  @apply flex justify-between px-2 text-xs font-light text-gray-500;
+}
+
+.AddFileButtonContainer {
+  @apply flex justify-end px-2 mt-2;
+}
+
+.SidebarItems {
+  @apply h-full overflow-hidden overflow-y-scroll;
+}

@@ -1,0 +1,11 @@
+.Input {
+  @apply w-full px-1 text-sm text-white bg-transparent border;
+}
+
+.Input:focus {
+  @apply bg-gray-200 outline-none bg-opacity-30;
+}
+
+.WarningMessage { 
+  @apply absolute top-0 left-0 z-50 w-full p-1 text-sm border border-t-0 bg-gray-main;
+}

@@ -8,6 +8,7 @@ import {
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import editorFiles from '@/lib/modules/editorFiles/slice';
+import openTabs from '@/lib/modules/openTabs/slice';
 import { RootState } from './types';
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const persistentReducer = persistReducer(
   persistConfig,
   combineReducers({
     editorFiles,
+    openTabs,
   })
 );
 

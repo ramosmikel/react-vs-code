@@ -2,6 +2,6 @@ import { AnchorHTMLAttributes } from 'react';
 import Image from 'next/image';
 
 export const components = {
-  img: ({ src }: HTMLImageElement) => <Image src={src} height={745} width={1440} />,
-  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <a {...props} target="_blank" />,
+  img: ({ src, alt }: HTMLImageElement) => <Image alt={alt} src={src} width={720} height={373} quality={50} />,
+  a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <a {...props} rel="noreferrer" target="_blank" />,
 };

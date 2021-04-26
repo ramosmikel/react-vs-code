@@ -227,15 +227,15 @@ const Home = ({ currentFile, files, openTabs, uiState, mdxContent }: Props) => {
         )}
         <div className={s.UtilityButtonsContainer}>
           {isTabAvailable && openTabs.tabs[openTabs.activeTab.index]?.isUnsaved && (
-            <button onClick={handleOnSaveFile} className={s.UtilityButton}>
+            <button type="button" onClick={handleOnSaveFile} className={s.UtilityButton}>
               <div>
-                <img src="./icons/save.svg" height={40} width={40} />
+                <img src="./icons/save.svg" alt="Save Icon" height={40} width={40} />
               </div>
             </button>
           )}
-          <button onClick={handleSubmitFiles} className={s.UtilityButton}>
+          <button type="button" aria-label="Export Files" onClick={handleSubmitFiles} className={s.UtilityButton}>
             <div>
-              <img src="./icons/export.svg" height={40} width={40} />
+              <img src="./icons/export.svg" alt="Export Icon" height={40} width={40} />
             </div>
           </button>
         </div>

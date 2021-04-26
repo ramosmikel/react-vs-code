@@ -26,12 +26,12 @@ h3 {
   @apply mt-2 text-2xl;
 }
 
-h4 {
-  @apply mt-4 text-xl font-thin;
-}
-
 ul {
   @apply p-4 space-y-4 rounded-md bg-black-dark;
+}
+
+li {
+  @apply mt-4 text-xl font-thin;
 }
 
 button:focus {

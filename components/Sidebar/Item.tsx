@@ -18,17 +18,14 @@ const Item = ({ onItemClick, onDeleteClick, onDoubleClick, isSelected, fileName 
   return (
     <div
       onDoubleClick={handleDoubleClick}
-      className={cn(
-        s.Root,
-        isSelected ? 'bg-gray-light text-yellow-600' : 'text-white opacity-40'
-      )}
+      className={cn(s.Root, isSelected ? 'bg-gray-light text-yellow-600' : 'text-white opacity-40')}
     >
-      <button onClick={handleOnDeleteClick}>
+      <button type="button" onClick={handleOnDeleteClick}>
         <div className={s.CancelIconContainer}>
-          <img src="./icons/cancel.svg" height="12" width="12" />
+          <img src="./icons/cancel.svg" alt="Cancel Icon" height="12" width="12" />
         </div>
       </button>
-      <button onClick={handleOnItemClick}>
+      <button type="button" onClick={handleOnItemClick}>
         <div className={s.FileNameContainer}>
           <span>{fileName}</span>
         </div>

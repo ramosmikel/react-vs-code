@@ -20,7 +20,7 @@ const Tab = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsaved}: Props) 
 
   return (
     <div className={cn(s.Root, isSelected ? 'border-yellow-300' : 'border-transparent')}>
-      <button onClick={handleOnClick}>
+      <button type="button" onClick={handleOnClick}>
         <span>
           {fileName}
         </span>
@@ -31,9 +31,9 @@ const Tab = ({ fileName, onClickTab, onCloseTab, isSelected, isUnsaved}: Props) 
             <div className={s.UnSavedIcon} />
           </div>
         ) : (
-          <button onClick={handleOnCloseTab}>
+          <button type="button" onClick={handleOnCloseTab}>
             <div>
-              <img src="./icons/cancel.svg" height="15" width="15" className={s.CancelIcon} />
+              <img src="./icons/cancel.svg" alt="Cancel Icon" height="15" width="15" className={s.CancelIcon} />
             </div>
           </button>
         )}

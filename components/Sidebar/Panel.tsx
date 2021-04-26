@@ -16,8 +16,8 @@ const Panel = ({ children }: PropsWithChildren<{}>) => {
         <div
           className={cn(s.QuickAccessPanel, isPanelOpen ? 'border-white' : 'border-transparent')}
         >
-          <button onClick={handlePanelStatus}>
-            <img src="./icons/files.svg" height="25" width="25" className={s.QuickAccessIcon} />
+          <button type="button" aria-label="Open Files Sidebar" onClick={handlePanelStatus}>
+            <img src="./icons/files.svg" alt="Files Icon" height="25" width="25" className={s.QuickAccessIcon} />
           </button>
         </div>
       </div>
@@ -30,8 +30,8 @@ const Panel = ({ children }: PropsWithChildren<{}>) => {
               <span>...</span>
             </div>
             <div className={s.AddFileButtonContainer}>
-              <button onClick={handleFileInputShow}>
-                <img src="./icons/add-file.svg" height="15" width="15" />
+              <button type="button" onClick={handleFileInputShow}>
+                <img src="./icons/add-file.svg" alt="Add File Icon"  height="15" width="15" />
               </button>
             </div>
           </div>

@@ -6,6 +6,7 @@ module.exports = {
     domains: ['multi-monaco.s3.eu-west-2.amazonaws.com'],
     loader: 'default',
   },
+  experimental: { optimizeCss: true },
   webpack(config) {
     return config;
   },

@@ -1,0 +1,27 @@
+.Root {
+  @apply relative flex w-screen bg-gray-main;
+}
+
+.SidebarContainer {
+  @apply flex-shrink-0 h-screen overflow-hidden;
+}
+
+.FileInputs {
+  @apply pl-4;
+}
+
+.TabListContainer {
+  @apply flex-grow h-screen overflow-y-hidden bg-gray-main;
+}
+
+.DefaultScreen {
+  @apply flex-grow h-screen p-4 overflow-y-scroll text-white bg-gray-main;
+}
+
+.UtilityButtonsContainer {
+  @apply absolute bottom-0 right-0 p-4 space-x-4;
+}
+
+.UtilityButton {
+  @apply p-3 bg-yellow-600 rounded-full;
+}
